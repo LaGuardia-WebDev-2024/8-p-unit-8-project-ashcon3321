@@ -1,26 +1,30 @@
-@font-face{
-  font-family: water;
-  src: url("https://cdn.glitch.global/97f7bbb3-2cd9-4b34-bbf2-d0a28c71f10b/Water%20Park.ttf?v=1738683075854");
+
+/* Polka Dot Background Found at Link Below
+https://codepen.io/poonam-adlakha/pen/PoRJeKM */
+
+
+
+html {
+    background-image: url("silent\ hill\ background.jpg");
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    text-align: center;
 }
 
-body {
-  background-color: aliceblue;
-  text-align: center;
-  color: navy;
+
+h1, h2{
+  background-color: rgba(255, 237, 237, 0.8);
+  color: #2e3246;
+  width: 400px;
   margin: auto;
-  font-family: water;
-}
-
-h1{
-  font-size: 30px;
-}
-
-#myCanvas {
-  background-image: url("https://www.shutterstock.com/image-vector/sun-rays-falling-deep-into-600nw-1721181988.jpg");
-  background-size: 600px 400px;
-  border-radius: 300px;
-  border: 5px solid white;
+  margin-bottom: 5px;
+  border-radius: 30px;
 }
 
 
-
+#myCanvas{
+  border: 5px solid #ffffff;
+}
