@@ -1,99 +1,91 @@
-// 🎯 image variables
+// image variables
 var cherylImg;
-var img1, img2, img3;
+var splithead1, splithead2, splithead3;
 var bg;
 
-// 🎯 visibility flags
-var show1 = true;
-var show2 = true;
-var show3 = true;
+// show perchance
+var splitheadShow1 = 1;
+var splitheadShow2 = 1;
+var splitheadShow3 = 1;
 
-// 🎯 game state
+//game result ig
 var gameWon = false;
 
-// 🎯 image size
+// image size
 var imgW = 100;
 var imgH = 100;
 
-// 🎯 image positions
-var img1X = 80,  img1Y = 150;
-var img2X = 250, img2Y = 150;
-var img3X = 420, img3Y = 150;
-
-
-
+// image positions
+var s1X = 80,  s1Y = 150;
+var s2X = 250, s2Y = 150;
+var s3X = 420, s3Y = 150;
 
 //🟢setup Function - will run once
 setup = function() {
-
     size(600, 400);
 
     bg = loadImage("https://wallpaperaccess.com/full/6195710.jpg");
-
     cherylImg = loadImage("CHERYL.png");
-    img1 = loadImage("demodog.webp");
-    img2 = loadImage("demodog.webp");
-    img3 = loadImage("demodog.webp");
+
+    splithead1 = loadImage("demodog.webp");
+    splithead2 = loadImage("demodog.webp");
+    splithead3 = loadImage("demodog.webp");
 };
 
 //🟢draw Function - will run on repeat
-draw = function(){
-
-
-    // check win condition
-    if (!show1 && !show2 && !show3) {
-        gameWon = true;
-    }
-
-    if (gameWon) {
-        // win screen hehehe
-        image(bg, 0, 0, width, height);
-        fill(255);
-        textAlign(CENTER, CENTER);
-        textSize(60);
-        text("YOU WIN!", width / 2, height / 2);
-        return; // stop drawing the game
-    }
-
-    // game screen!!!
+draw = function() {
     image(bg, 0, 0, width, height);
 
-    if (show1) image(img1, img1X, img1Y, imgW, imgH);
-    if (show2) image(img2, img2X, img2Y, imgW, imgH);
-    if (show3) image(img3, img3X, img3Y, imgW, imgH);
+    // draw splitheads using custom function
+    drawSplithead(splithead1, splitheadShow1, s1X, s1Y, imgW, imgH);
+    drawSplithead(splithead2, splitheadShow2, s2X, s2Y, imgW, imgH);
+    drawSplithead(splithead3, splitheadShow3, s3X, s3Y, imgW, imgH);
 
+    // Cheryl follows mouse
     image(cherylImg, mouseX - 40, mouseY - 40, 80, 80);
 
-     
-
+    // win condition
+    if (splitheadShow1 == 0 && splitheadShow2 == 0 && splitheadShow3 == 0) {
+        textAlign(CENTER, CENTER);
+        textSize(60);
+        fill(255);
+        text("YOU WIN!", width / 2, height / 2);
+    }
 };
 
 //🟢mouseClicked Function - will run when mouse is clicked
-mouseClicked = function(){
-
-
-
-    if (
-        show1 &&
-        mouseX > img1X && mouseX < img1X + imgW &&
-        mouseY > img1Y && mouseY < img1Y + imgH
-    ) {
-        show1 = false;
+mouseClicked = function() {
+    // use custom functions to check clicks and hide splitheads
+    if (splitheadShow1 && isClicked(s1X, s1Y, imgW, imgH)) {
+        console.log("Cheryl beat splithead 1");
+        splitheadShow1 = hideSplithead(splitheadShow1);
     }
 
-    if (
-        show2 &&
-        mouseX > img2X && mouseX < img2X + imgW &&
-        mouseY > img2Y && mouseY < img2Y + imgH
-    ) {
-        show2 = false;
+    if (splitheadShow2 && isClicked(s2X, s2Y, imgW, imgH)) {
+        console.log("Cheryl beat splithead 2");
+        splitheadShow2 = hideSplithead(splitheadShow2);
     }
 
-    if (
-        show3 &&
-        mouseX > img3X && mouseX < img3X + imgW &&
-        mouseY > img3Y && mouseY < img3Y + imgH
-    ) {
-        show3 = false;
+    if (splitheadShow3 && isClicked(s3X, s3Y, imgW, imgH)) {
+        console.log("Cheryl beat splithead 3");
+        splitheadShow3 = hideSplithead(splitheadShow3);
     }
 };
+
+//🟢Custom Function 1: check if mouse click is inside a rectangle
+function isClicked(x, y, w, h) {
+    return mouseX > x && mouseX < x + w &&
+           mouseY > y && mouseY < y + h;
+}
+
+//🟢Custom Function 2: hide a splithead (return updated show value)
+function hideSplithead(showVar) {
+    return 0;
+}
+
+//🟢Custom Function 3: draw a splithead if visible
+function drawSplithead(img, show, x, y, w, h) {
+    if (show) {
+        image(img, x, y, w, h);
+    }
+}
