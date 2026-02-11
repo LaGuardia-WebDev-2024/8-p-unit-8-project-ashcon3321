@@ -72,18 +72,18 @@ mouseClicked = function() {
     }
 };
 
-//🟢Custom Function 1: check if mouse click is inside a rectangle
+// poop
 function isClicked(x, y, w, h) {
     return mouseX > x && mouseX < x + w &&
            mouseY > y && mouseY < y + h;
 }
 
-//🟢Custom Function 2: hide a splithead (return updated show value)
+// poop
 function hideSplithead(showVar) {
     return 0;
 }
 
-//🟢Custom Function 3: draw a splithead if visible
+// poop
 function drawSplithead(img, show, x, y, w, h) {
     if (show) {
         image(img, x, y, w, h);
