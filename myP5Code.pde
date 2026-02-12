@@ -23,6 +23,9 @@ draw = function(){
 
   // Cheryl
   drawCheryl(mouseX, mouseY);
+
+  //poop
+  drawPoop(650, 450);
   
   
 
@@ -81,5 +84,5 @@ var drawSplitHead = function(x, y, size){
 var drawPoop = function (poopX, poopY){
   fill(147, 197, 114);
   textSize(100);
-  text("⌇", poopX, poopY);
+  text("💩", poopX, poopY);
 };
